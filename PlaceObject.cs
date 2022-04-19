@@ -17,8 +17,7 @@ public class PlaceObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-                // Get click
+        // Get click
         if (Input.GetButtonDown("Fire1"))
         {
             var v3 = Input.mousePosition;
@@ -31,9 +30,15 @@ public class PlaceObject : MonoBehaviour
             {
                 if(hit.collider.tag == "Ground")
                 {
-                    v3.x = (float)Math.Round(v3.x * 2) / 2;
-                    v3.y = (float)Math.Round(v3.y * 2) / 2;
-                    v3.z = (float)Math.Round(v3.z * 2) / 2;
+
+                    // round up
+                    v3.x = (float)Math.Round(v3.x);
+                    v3.y = (float)Math.Round(v3.y);
+
+                    // add .5
+                    v3.x += .5f;
+                    v3.y += .5f;
+
                     Instantiate(plantPrefab, v3, Quaternion.identity);
                 }
             }
