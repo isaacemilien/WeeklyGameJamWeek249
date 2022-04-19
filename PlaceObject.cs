@@ -30,15 +30,9 @@ public class PlaceObject : MonoBehaviour
             {
                 if(hit.collider.tag == "Ground")
                 {
-
-                    // round up
-                    v3.x = (float)Math.Round(v3.x);
-                    v3.y = (float)Math.Round(v3.y);
-
-                    // add .5
-                    v3.x += .5f;
-                    v3.y += .5f;
-
+                    v3.x = (float)Math.Round(v3.x * 2) / 2;
+                    v3.y = (float)Math.Round(v3.y * 2) / 2;
+                    v3.z = (float)Math.Round(v3.z * 2) / 2;
                     Instantiate(plantPrefab, v3, Quaternion.identity);
                 }
             }
