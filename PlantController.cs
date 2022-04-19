@@ -5,9 +5,6 @@ using UnityEngine;
 public class PlantController : MonoBehaviour
 {
     #region FIELDS
-    Vector2 velocity = new Vector2(1f, 0f);
-
-    [SerializeField] PlayerData playerData;
     #endregion
 
     #region MONOBEHAVIOUR METHODS 
@@ -15,16 +12,21 @@ public class PlantController : MonoBehaviour
     {
     }
 
-    void Update()
+    void OnEnable()
     {
-        if (playerData.playerMoved)
-        {
-            playerData.playerMoved = false;
-            gameObject.transform.localScale += new Vector3(0, 1, 0);
-        }
+        EventManager.OnMoved += Grow;
+    }
+
+    void OnDisable()
+    {
+        EventManager.OnMoved -= Grow;
     }
     #endregion
 
     #region METHODS
+    void Grow()
+    {
+        gameObject.transform.localScale += new Vector3(0, 1, 0);
+    }
     #endregion
 }

@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     #region FIELDS
     Rigidbody2D rb;
-    Vector2 velocity = new Vector2(1f, 0f);
+    Vector2 sideVelocity = new Vector2(1f, 0f);
+    Vector2 upVelocity = new Vector2(0f, 1f);
 
     [SerializeField] PlayerData playerData;
     #endregion
@@ -15,23 +16,29 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        Debug.Log(5);
     }
 	
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
-            rb.MovePosition(rb.position + velocity);
+            rb.MovePosition(rb.position + sideVelocity);
             playerData.playerMoved = true;
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            rb.MovePosition(rb.position + -velocity);
+            rb.MovePosition(rb.position + -sideVelocity);
             playerData.playerMoved = true;
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            playerData.playerMoved = true;
+            rb.MovePosition(rb.position + upVelocity);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.MovePosition(rb.position + upVelocity);
         }
     }
     #endregion
