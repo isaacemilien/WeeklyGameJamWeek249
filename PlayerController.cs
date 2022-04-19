@@ -35,10 +35,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             rb.MovePosition(rb.position + upVelocity);
+            playerData.playerMoved = true;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.MovePosition(rb.position + upVelocity);
+            playerData.playerMoved = true;
         }
     }
     #endregion
