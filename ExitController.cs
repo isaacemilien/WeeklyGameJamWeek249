@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitController : MonoBehaviour
 {
@@ -19,5 +20,7 @@ public class ExitController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log("Level complete");
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
